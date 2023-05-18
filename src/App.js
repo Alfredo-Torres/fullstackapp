@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { fetchSearchResults } from './api';
+import SearchBar from './SearchBar';
+import SearchResults from './SearchResults';
 
 function App() {
+  const [searchResults, setSearchResults] = useState(null);
+
+  async function handleSearch(searchTerm) {
+    try {
+      const results = await fetchSearchResults(searchTerm);
+      setSearchResults(results);
+    } catch (error) {
+      console.error('Error handling search:', error);
+    }
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <SearchBar onSearch={handleSearch} />
+      <SearchResults data={searchResults} />
     </div>
   );
 }
 
 export default App;
+
+
