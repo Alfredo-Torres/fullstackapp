@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { fetchHorizonsData, fetchSearchResults } from './api';
+import { fetchSearchResults } from './api';
 
 function SearchBar({ onSearch }) {
   const [searchTerm, setSearchTerm] = useState('');
@@ -7,8 +7,8 @@ function SearchBar({ onSearch }) {
   async function handleSubmit(event) {
     event.preventDefault();
     try {
-      const searchData = await fetchSearchResults();
-      onSearch(searchTerm); // Pass the searchTerm to onSearch
+      const searchData = await fetchSearchResults(searchTerm); // Use the fetchSearchResults function
+      onSearch(searchData); // Pass the searchData to onSearch
     } catch (error) {
       console.error('Error searching:', error);
     }
@@ -45,3 +45,4 @@ const boxStyles = {
 };
 
 export default SearchBar;
+
