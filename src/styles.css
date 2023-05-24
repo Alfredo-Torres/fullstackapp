@@ -1,0 +1,13 @@
+body {
+    margin: 0;
+    background-image: url("path/to/your/image.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  .header {
+    text-align: center;
+    padding: 20px;
+  }
+  
