@@ -5,7 +5,7 @@ const SearchResults = ({ data }) => {
     <div style={containerStyles}>
       <div style={boxStyles}>
         <h2>Search Results</h2>
-        {data ? (
+        {Array.isArray(data) && data.length > 0 ? (
           <ul>
             {data.map((result) => (
               <li key={result.id}>{result.name}</li>
@@ -34,4 +34,6 @@ const boxStyles = {
 };
 
 export default SearchResults;
+
+
 

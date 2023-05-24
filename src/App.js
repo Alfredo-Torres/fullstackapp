@@ -4,7 +4,7 @@ import SearchBar from './SearchBar';
 import SearchResults from './SearchResults';
 
 function App() {
-  const [searchResults, setSearchResults] = useState(null);
+  const [searchResults, setSearchResults] = useState([]);
 
   async function handleSearch(searchTerm) {
     try {
